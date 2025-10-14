@@ -153,7 +153,7 @@ export default function HowItWorks() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               transition={{ delay: 0.1 }}
-              className="absolute top-0 right-12 max-w-xs group cursor-default"
+              className="absolute top-20 scale-75 right-12 max-w-xs group cursor-default"
             >
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }} className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -181,7 +181,7 @@ export default function HowItWorks() {
                   repeat: Number.POSITIVE_INFINITY,
                   ease: "easeInOut",
                 }}
-                className="relative w-full max-w-3xl h-[500px]"
+                className="relative -left-20 w-full max-w-3xl h-[500px]"
               >
                 <Image
                   src="/three-phones.png"
@@ -200,7 +200,7 @@ export default function HowItWorks() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               transition={{ delay: 0.2 }}
-              className="absolute top-1/2 -translate-y-1/2 right-0 max-w-sm group cursor-default"
+              className="absolute top-1/2 -translate-y-1/2 -right-24 max-w-sm group cursor-default"
             >
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }} className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export default function HowItWorks() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               transition={{ delay: 0.3 }}
-              className="absolute bottom-20 right-12 max-w-xs group cursor-default"
+              className="absolute bottom-20 right-12 scale-75 max-w-xs group cursor-default"
             >
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }} className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -236,7 +236,7 @@ export default function HowItWorks() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               transition={{ delay: 0.4 }}
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-xs group cursor-default"
+              className="absolute -bottom-20 left-[65%] -translate-x-1/2 scale-50 max-w-xs group cursor-default"
             >
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }} className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -322,7 +322,7 @@ export default function HowItWorks() {
             whileHover={{ scale: 1.05, borderColor: "rgba(255, 255, 255, 0.3)" }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="px-8 py-3 md:px-10 md:py-4 border border-gray-800 rounded-full text-white text-sm md:text-base font-medium hover:bg-white/5 transition-colors"
+            className="px-8 py-3 md:px-10 md:py-4 border border-[#2A2A2A] cursor-pointer border-b-[#6E6E6E] rounded-full text-white text-sm md:text-base font-medium hover:bg-white/5 transition-colors"
           >
             Join the Waitlist
           </motion.button>
