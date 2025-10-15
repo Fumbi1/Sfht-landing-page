@@ -9,22 +9,24 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div className="w-full pt-12 md:pt-0">
+    <div id="home" className="w-full pt-12 md:pt-0">
       <div className="fixed w-full top-0 left-0 bg-[#1A1A1A] z-50">
         <div className="hidden py-6 md:px-[5%] md:w-full md:flex md:flex-row md:justify-between md:items-center">
           <div>
-            <Image src={"/Logo.svg"} alt="logo" width={94} height={29} />
+            <Image src={"/logo.svg"} alt="logo" width={94} height={29} />
           </div>
           <div className="md:flex md:flex-row md:gap-6 text-base leading-6">
-            <Link href="#">Home</Link>
-            <Link href="#">Features</Link>
-            <Link href="#">How It Works</Link>
-            <Link href="#">Testimonials</Link>
+            <Link href="#home">Home</Link>
+            <Link href="#features">Features</Link>
+            <Link href="#how-it-works">How It Works</Link>
+            <Link href="#testimonials">Testimonials</Link>
           </div>
           <div>
-            <button className="w-fit h-fit rounded-full bg-[#FBE9F5] px-8 py-3 border-2 text-[#010015] text-sm leading-5">
-              Join Waitlist
-            </button>
+            <Link href="https://waitlist.shftapp.info/" target="_blank" rel="noopener noreferrer">
+              <button className="w-fit h-fit cursor-pointer rounded-full bg-[#FBE9F5] px-8 py-3 border-2 text-[#010015] text-sm leading-5">
+                Join Waitlist
+              </button>
+            </Link>
           </div>
         </div>
         {/*mobile setup*/}
@@ -78,9 +80,26 @@ const NavBar = () => {
             className="md:hidden w-full fixed top-[60px] left-0 z-10 bg-[#1A1A1A] h-[50dvh] overflow-hidden shadow-2xl"
           >
             <div className="flex flex-col h-full text-base overflow-y-auto leading-6 p-8 space-y-4">
-              {["Home", "Features", "How It Works", "Testimonials"].map((item, index) => (
+              {[
+                {
+                  name: "Home",
+                  link: "#"
+                },
+                {
+                  name: "Features",
+                  link: "#features"
+                },
+                {
+                  name: "How It Works",
+                  link: "#how-it-works"
+                },
+                {
+                  name: "Testimonials",
+                  link: "#testimonials"
+                }
+              ].map((item, index) => (
                 <motion.div
-                  key={item}
+                  key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
@@ -90,11 +109,11 @@ const NavBar = () => {
                   }}
                 >
                   <Link
-                    href="#"
+                    href={item.link}
                     onClick={() => setIsMenuOpen(false)}
                     className="block hover:text-[#FBE9F5] transition-colors duration-200"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </motion.div>
               ))}
@@ -108,9 +127,11 @@ const NavBar = () => {
                   ease: "easeOut",
                 }}
               >
-                <button className="w-fit h-fit rounded-full bg-[#FBE9F5] px-8 py-3 border-2 text-[#010015] text-sm leading-5 hover:bg-[#f5d4ea] transition-colors duration-200">
-                  Join Waitlist
-                </button>
+                <Link href="https://waitlist.shftapp.info/" target="_blank" rel="noopener noreferrer">
+                  <button className="w-fit h-fit rounded-full bg-[#FBE9F5] px-8 py-3 border-2 text-[#010015] text-sm leading-5 hover:bg-[#f5d4ea] transition-colors duration-200">
+                    Join Waitlist
+                  </button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

@@ -70,7 +70,7 @@ export default function Features() {
     const isInView = useInView(ref, { once: true, amount: 0.2 })
 
     return (
-        <section ref={ref} className="relative w-full bg-[#1A1A1A] py-16 px-4 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
+        <section ref={ref} className="relative w-full bg-[#1A1A1A] py-16 px-4 sm:py-20 md:py-24 lg:py-32 overflow-hidden" id="features">
             {/* Decorative curved lines - SVG */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
                 <motion.ellipse

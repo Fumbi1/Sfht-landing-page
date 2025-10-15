@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "motion/react"
 
 const Hero = () => {
@@ -48,22 +49,26 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-3 mb-12 md:mb-0"
           >
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
-              className="w-full sm:w-auto whitespace-nowrap rounded-full bg-[#FBE9F5] px-6 md:px-8 py-3 border-2 border-[#FBE9F5] text-[#010015] text-sm font-medium leading-5"
-            >
-              Join our journey now
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2, borderColor: "#FFFFFF" }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
-              className="w-full sm:w-auto whitespace-nowrap rounded-full bg-transparent px-6 md:px-8 py-3 border border-[#FFFFFF66] text-sm font-medium leading-5"
-            >
-              See how it works
-            </motion.button>
+            <Link href="https://waitlist.shftapp.info/" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="w-full sm:w-auto whitespace-nowrap rounded-full bg-[#FBE9F5] px-6 md:px-8 py-3 border-2 border-[#FBE9F5] text-[#010015] text-sm font-medium leading-5"
+              >
+                Join our journey now
+              </motion.button>
+            </Link>
+            <Link href="#how-it-works">
+              <motion.button
+                whileHover={{ scale: 1.02, y: -2, borderColor: "#FFFFFF" }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="w-full sm:w-auto whitespace-nowrap rounded-full bg-transparent px-6 md:px-8 py-3 border border-[#FFFFFF66] text-sm font-medium leading-5"
+              >
+                See how it works
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
 

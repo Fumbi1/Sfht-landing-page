@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 import { useInView } from "motion/react"
 import Image from "next/image"
+import Link from "next/link"
 import { useRef } from "react"
 
 export default function HowItWorks() {
@@ -79,7 +80,7 @@ export default function HowItWorks() {
   }
 
   return (
-    <section ref={ref} className="relative bg-[#1A1A1A] py-20 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative bg-[#1A1A1A] py-20 md:py-32 overflow-hidden" id="how-it-works">
       {/* Decorative corner elements */}
       <motion.div
         initial={{ opacity: 0, x: -20, y: -20 }}
@@ -318,14 +319,16 @@ export default function HowItWorks() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex justify-center mt-16 md:mt-24"
         >
-          <motion.button
-            whileHover={{ scale: 1.05, borderColor: "rgba(255, 255, 255, 0.3)" }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.2 }}
-            className="px-8 py-3 md:px-10 md:py-4 border border-[#2A2A2A] cursor-pointer border-b-[#6E6E6E] rounded-full text-white text-sm md:text-base font-medium hover:bg-white/5 transition-colors"
-          >
-            Join the Waitlist
-          </motion.button>
+          <Link href="https://waitlist.shftapp.info/" target="_blank" rel="noopener noreferrer">
+            <motion.button
+              whileHover={{ scale: 1.05, borderColor: "rgba(255, 255, 255, 0.3)" }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="px-8 py-3 md:px-10 md:py-4 border border-[#2A2A2A] cursor-pointer border-b-[#6E6E6E] rounded-full text-white text-sm md:text-base font-medium hover:bg-white/5 transition-colors"
+            >
+              Join the Waitlist
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

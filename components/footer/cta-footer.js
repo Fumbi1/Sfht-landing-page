@@ -8,7 +8,7 @@ export default function CTAAndFooter() {
   return (
     <>
       {/* CTA Section */}
-      <section className="relative bg-[#1A1A1A] py-16 px-4 sm:px-6 lg:px-16 overflow-hidden">
+      <section id="testimonials" className="relative bg-[#1A1A1A] py-16 px-4 sm:px-6 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
@@ -111,10 +111,27 @@ export default function CTAAndFooter() {
             >
               <h3 className="text-white font-semibold text-sm uppercase tracking-wider">Company</h3>
               <ul className="space-y-3">
-                {["Home", "Features", "How it works", "Testimonials", "Download The App"].map((item) => (
-                  <li key={item}>
-                    <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                      {item}
+                {[
+                  {
+                  name: "Home",
+                  link: "#"
+                },
+                {
+                  name: "Features",
+                  link: "#features"
+                },
+                {
+                  name: "How It Works",
+                  link: "#how-it-works"
+                },
+                {
+                  name: "Testimonials",
+                  link: "#testimonials"
+                }
+                ].map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.link} className="text-gray-400 hover:text-white transition-colors text-sm">
+                      {item.name}
                     </Link>
                   </li>
                 ))}
