@@ -30,14 +30,14 @@ const NavBar = () => {
           </div>
         </div>
         {/*mobile setup*/}
-        <div className="md:hidden py-4 relative z-20">
+        <div className="md:hidden py-6 relative z-20">
           <div className="w-11/12 mx-auto flex flex-row justify-between">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <Image src={"/Logo.svg"} alt="logo" width={94} height={29} />
+              <Image src={"/logo.svg"} alt="logo" width={94} height={29} />
             </motion.div>
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
