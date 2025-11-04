@@ -25,10 +25,10 @@ const Hero = () => {
             className="w-fit h-fit mt-7 mb-8"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 md:mb-6 leading-tight">
-              Manage & assign
+              Fastest Shift
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
-              shifts in minutes
+              Swaps in Seconds
             </h1>
             <motion.p
               initial={{ opacity: 0 }}
