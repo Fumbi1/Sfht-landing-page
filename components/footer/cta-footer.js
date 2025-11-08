@@ -139,7 +139,7 @@ export default function CTAAndFooter() {
             </motion.div>
 
             {/* Resources Links */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -161,7 +161,7 @@ export default function CTAAndFooter() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div> */}
 
             {/* About Links */}
             <motion.div
@@ -192,7 +192,7 @@ export default function CTAAndFooter() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="pt-8 border-t border-gray-900 text-center"
           >
-            <p className="text-gray-500 text-sm">Copyright © 2025 ShiftApp</p>
+            <p className="text-gray-500 text-sm">Copyright © 2025 Product of Ethos Ltd</p>
           </motion.div>
         </div>
       </footer>

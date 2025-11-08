@@ -1,0 +1,187 @@
+
+"use client";
+import React, { useState} from "react";
+import axios from "axios";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Check, ArrowRight } from "lucide-react";
+const BASE_URL = "https://shift-yuw6.onrender.com/api/v1/";
+
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export default function Waitlist() {
+  const [companyName, setCompanyName] = useState("");
+  const [companyEmail, setCompanyEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({ companyName: "", companyEmail: "" });
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = async () => {
+    const newErrors = { companyName: "", companyEmail: "" };
+
+    if (!companyName.trim()) {
+      newErrors.companyName = "Company name is required.";
+    }
+
+    if (!companyEmail.trim()) {
+      newErrors.companyEmail = "Company email is required.";
+    } else if (!validateEmail(companyEmail)) {
+      newErrors.companyEmail = "Please enter a valid email address.";
+    }
+
+    setErrors(newErrors);
+
+    if (!newErrors.companyName && !newErrors.companyEmail) {
+      setIsLoading(true);
+      try {
+        const response = await axiosInstance.post(`waitlist`, {
+          email: companyEmail,
+          companyName,
+        });
+        toast.success("You’ve been added to the waitlist! 🎉");
+        console.log(response, "here is the response");
+        setIsSubmitted(true);
+      } catch (error) {
+        toast.error(error);
+        console.error("Error submitting form", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  const fadeVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  return (
+    <div>
+      <motion.div
+        className="lg:pl-12"
+        initial="hidden"
+        animate="visible"
+        variants={fadeVariants}
+      >
+        <motion.div
+          className="rounded-3xl p-8 shadow-lg max-w-md mx-auto min-h-[360px] flex flex-col items-center justify-center"
+          variants={fadeVariants}
+        >
+          <AnimatePresence>
+            {isSubmitted ? (
+              <motion.div
+                className="text-center space-y-4"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Check className="text-green-500 w-10 h-10 mx-auto" />
+                <h2 className="text-2xl font-bold text-[#fff]">
+                  You're now on our waitlist!
+                </h2>
+                <p className="text-gray-600">
+                  Thanks for signing up. We'll let you know as soon as we
+                  launch!
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                className="w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <h2 className="text-3xl font-bold text-[#fff] mb-4 text-center">
+                  Join our journey and get early access
+                </h2>
+                <p className="text-[#fff] text-center mb-8 leading-relaxed">
+                  Something big is coming — built for companies like yours. Join
+                  the waitlist for early access
+                </p>
+
+                <div className="space-y-4">
+                  <div>
+                    <Input
+                      type="text"
+                      placeholder="Your company name"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      className={`w-full px-4 py-7 border ${
+                        errors.companyName ? "border-red-500" : "border-[#fff]"
+                      } rounded-full focus:outline-none bg-transparent focus:ring-2 focus:ring-purple-500 placeholder:text-[#E1E1E1] focus:border-[#fff]`}
+                    />
+                    {errors.companyName && (
+                      <motion.p
+                        className="text-sm text-red-500 mt-1"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
+                        {errors.companyName}
+                      </motion.p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Enter your company email"
+                      value={companyEmail}
+                      onChange={(e) => setCompanyEmail(e.target.value)}
+                      className={`w-full px-4 py-7 border ${
+                        errors.companyEmail ? "border-red-500" : "border-[#fff]"
+                      } rounded-full focus:outline-none bg-transparent focus:ring-2 focus:ring-purple-500 placeholder:text-[#E1E1E1] focus:border-[#fff]`}
+                    />
+                    {errors.companyEmail && (
+                      <motion.p
+                        className="text-sm text-red-500 mt-1"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
+                        {errors.companyEmail}
+                      </motion.p>
+                    )}
+                  </div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      onClick={handleSubmit}
+                      disabled={isLoading}
+                      className="w-full bg-[#fff] hover:bg-gray-[#E1E1E1] text-white py-7 px-6 rounded-full font-semibold flex items-center justify-center gap-2 transition-colors"
+                    >
+                      {!isLoading ? (
+                        <>
+                          <h2 className="text-[#2a2a2a] text-center">
+                            Join Waitlist
+                          </h2>
+
+                          <ArrowRight className="w-4 h-4" />
+                        </>
+                      ) : (
+                        " Submitting"
+                      )}
+                    </Button>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}

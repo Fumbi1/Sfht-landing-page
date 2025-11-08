@@ -1,6 +1,7 @@
 import { Urbanist } from "next/font/google";
 import NavBar from "@/components/nav/nav";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
       >
         <NavBar />
         {children}
+         <Toaster position="top-center" richColors closeButton />
       </body>
     </html>
   );
