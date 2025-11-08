@@ -14,6 +14,7 @@ const NavBar = () => {
         <div className="hidden py-6 md:px-[5%] md:w-full md:flex md:flex-row md:justify-between md:items-center">
           <div>
             <Image src={"/logo.svg"} alt="logo" width={94} height={29} />
+            <Link href="#home" className="text-[#FFF]">By Ethos Ltd</Link>
           </div>
           <div className="md:flex md:flex-row md:gap-6 text-base leading-6">
             <Link href="#home">Home</Link>
